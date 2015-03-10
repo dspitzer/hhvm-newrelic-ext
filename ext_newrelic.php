@@ -124,6 +124,7 @@ class NewRelicExtensionHelper {
     }
 
     static function errorCallback($type, $message, $c) {
+        if ($type < E_ERROR) return false;
         $exception_type = self::friendlyErrorType($type);
         $error_message = $message;
         $stack_trace = self::debug_backtrace_string();
